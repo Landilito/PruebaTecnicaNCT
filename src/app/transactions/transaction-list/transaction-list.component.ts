@@ -22,8 +22,7 @@ export class TransactionListComponent implements OnInit {
     })
   }
 
-  ShowTransaction = (transaction: Transaction) => {
-    this.transactionRouter.navigate([`transaction-description/:${transaction.id}`])
-    console.log(transaction);
+  ShowTransaction = (transactionId: string) => {
+    this.transactionRouter.navigate([`transaction-description/${transactionId}`])
   }
 }
