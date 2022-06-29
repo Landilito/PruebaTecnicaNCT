@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { elementAt, lastValueFrom } from 'rxjs';
 import { AccountService } from 'src/app/services/account.service';
 import { Transaction } from '../transaction';
 
@@ -10,22 +9,14 @@ import { Transaction } from '../transaction';
 })
 export class TransactionListComponent implements OnInit {
 
-  transactions: Transaction[] =[{
-    id: '',
-    concept: '',
-    description: '',
-    amount: 0,
-  }];
+  transactions: Transaction[] = [];
 
   constructor(private accountService: AccountService) { }
 
   ngOnInit(): void {
-    this.accountService.getAccounts().subscribe(data => {
-      console.log(data);
-      // for (let i = 0; i < data.length; i++) {
-      //   this.transactions.push(data[i])
-      // };
-      this.transactions.push(data);
+    this.accountService.getAccounts().subscribe(transactions => {
+      this.transactions = transactions.data;
+      console.log(transactions);
     })
   }
 
