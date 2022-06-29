@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TransactionsModule } from './transactions/transactions.module';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { TransactionsModule } from './transactions/transactions.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    TransactionsModule
+    TransactionsModule,
+    SharedModule
 
   ],
   providers: [],
