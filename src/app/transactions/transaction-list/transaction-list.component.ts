@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AccountService } from 'src/app/services/account.service';
 import { Transaction } from '../transaction';
+import { TransactionRoutingModule } from '../transaction-routing.module';
 
 @Component({
   selector: 'app-transaction-list',
@@ -11,7 +13,7 @@ export class TransactionListComponent implements OnInit {
 
   transactions: Transaction[] = [];
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private transactionRouter: Router) { }
 
   ngOnInit(): void {
     this.accountService.getAccounts().subscribe(transactions => {
@@ -20,4 +22,8 @@ export class TransactionListComponent implements OnInit {
     })
   }
 
+  ShowTransaction = (transaction: Transaction) => {
+    this.transactionRouter.navigate([`transaction-description/:${transaction.id}`])
+    console.log(transaction);
+  }
 }
