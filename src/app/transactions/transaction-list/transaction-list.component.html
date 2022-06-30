@@ -2,10 +2,14 @@
 
   <div class="container">
     <div class="row">
-      <div class="card col-sm" style="width:18rem;">
+      <div class="card col-sm bg-info" style="width:18rem;">
         <div class="card-header" *ngFor="let transaction of transactions">
           <h5 class="card-title">{{transaction.concept}}</h5>
-          <button class="btn btn-success" (click)= "ShowTransaction(transaction.id)">Detalle transaccion</button>
+          <br>
+          <div style="text-align:right;">
+          <button class="btn btn-outline-light" (click)= "ShowTransaction(transaction.id)">Transaction details</button>
+          <button class="btn btn-outline-danger">Delete transaction</button>
+          </div>
         </div>
       </div>
     </div>
