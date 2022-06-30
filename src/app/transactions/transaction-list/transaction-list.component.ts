@@ -16,7 +16,7 @@ export class TransactionListComponent implements OnInit {
   constructor(private accountService: AccountService, private transactionRouter: Router) { }
 
   ngOnInit(): void {
-    this.accountService.getAccounts().subscribe(transactions => {
+    this.accountService.getTransactions().subscribe(transactions => {
       this.transactions = transactions.data;
       console.log(transactions);
     })
