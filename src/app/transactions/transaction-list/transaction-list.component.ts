@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AccountService } from 'src/app/services/account.service';
+import { TransactionService } from 'src/app/services/transaction.service';
 import { Transaction } from '../transaction';
-import { TransactionRoutingModule } from '../transaction-routing.module';
 
 @Component({
   selector: 'app-transaction-list',
@@ -13,10 +12,10 @@ export class TransactionListComponent implements OnInit {
 
   transactions: Transaction[] = [];
 
-  constructor(private accountService: AccountService, private transactionRouter: Router) { }
+  constructor(private transactionService: TransactionService, private transactionRouter: Router) { }
 
   ngOnInit(): void {
-    this.accountService.getTransactions().subscribe(transactions => {
+    this.transactionService.getTransactions().subscribe(transactions => {
       this.transactions = transactions.data;
       console.log(transactions);
     })

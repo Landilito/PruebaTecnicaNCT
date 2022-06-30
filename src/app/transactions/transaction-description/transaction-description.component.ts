@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TransactionService } from 'src/app/services/transaction.service';
 
 @Component({
   selector: 'app-transaction-description',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransactionDescriptionComponent implements OnInit {
 
-  constructor() { }
+  constructor(private transactionService: TransactionService) { }
 
   ngOnInit(): void {
   }
