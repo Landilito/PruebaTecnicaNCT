@@ -12,16 +12,16 @@ export class TransactionListComponent implements OnInit {
 
   transactions: Transaction[] = [];
 
-  constructor(private transactionService: TransactionService, private transactionRouter: Router) { }
+  constructor(private transactionService: TransactionService, private router: Router) { }
 
   ngOnInit(): void {
-    this.transactionService.getTransactions().subscribe(transactions => {
+    this.transactionService.getAllTransactions().subscribe(transactions => {
+      this.transactionService.setTransactions(transactions.data);
       this.transactions = transactions.data;
-      console.log(transactions);
     })
   }
 
-  ShowTransaction = (transactionId: string) => {
-    this.transactionRouter.navigate([`transaction-description/${transactionId}`])
+  showTransaction = (transactionId: string) => {
+    this.router.navigate([`transaction-description/${transactionId}`])
   }
 }
