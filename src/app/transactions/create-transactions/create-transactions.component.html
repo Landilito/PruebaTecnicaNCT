@@ -1,0 +1,44 @@
+<div class="card text-center border-info mx-auto" style="width: 75rem; margin-top:100px;">
+    <form class="row g-3" (ngSubmit) ="createTransaction(transaction)">
+        <div class="col-md-6">
+          <label class="form-label">Concept</label>
+          <input type="text" class="form-control" name="concept"
+          ngModel required
+          [(ngModel)]="transaction.concept">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Ammount</label>
+          <input type="text" class="form-control" name="ammount"
+          mask="separator.2" 
+          thousandSeparator="," 
+          separatorLimit="10000000"
+          ngModel required
+          [(ngModel)]="transaction.ammount">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Date</label>
+          <input type="datetime" class="form-control" name="date"
+          mask="0000/00/00"
+          ngModel required
+          [(ngModel)]="transaction.date" placeholder="10/12/2018...">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Description</label>
+          <input type="text" class="form-control" name="description"
+          ngModel required
+          [(ngModel)]="transaction.description" placeholder="Something...">
+        </div>
+        <div class="col-12">
+          <label for="inputState" class="form-label">State</label>
+          <select id="inputState" class="form-select">
+            <option selected>Choose...</option>
+            <option *ngFor="let account of account">{{account.id}}</option>
+          </select>
+        </div>
+        <div class="col-12" style="padding-top:20px;">
+          <button type="submit" class="btn btn-outline-success" style="margin-bottom: 10px;">
+            Create transaction
+          </button>
+        </div>
+      </form>
+</div>
