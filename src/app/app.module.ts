@@ -7,6 +7,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TransactionsModule } from './transactions/transactions.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthorizationInterceptorService } from './services/authorization-interceptor.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -18,7 +20,10 @@ import { AuthorizationInterceptorService } from './services/authorization-interc
     AppRoutingModule,
     HttpClientModule,
     TransactionsModule,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
+
 
   ],
   providers: [
