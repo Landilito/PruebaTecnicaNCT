@@ -25,8 +25,20 @@ export class TransactionService {
     return this.httpClient.get(`${environment.api_url}/transactions`)
   }
 
+  getAccounts(): Observable<any>{
+    return this.httpClient.get(`${environment.api_url}/accounts`)
+  }
+
   updateTransaction(transaction: Transaction): Observable<any>{
     return this.httpClient.put(`${environment.api_url}/transactions`, transaction)
+  }
+
+  createTransaction(transaction: Transaction): Observable<any>{
+    return this.httpClient.post(`${environment.api_url}/transactions`, transaction)
+  }
+
+  deleteTransaction(transactionId: string): Observable<any>{
+    return this.httpClient.delete(`${environment.api_url}/${{transactionId}}`)
   }
 
 }
