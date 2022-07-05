@@ -24,4 +24,12 @@ export class TransactionListComponent implements OnInit {
   showTransaction = (transactionId: string) => {
     this.router.navigate([`transaction-description/${transactionId}`])
   }
+
+  deleteTransaction = (transactionId: string) => {
+    const transaction = this.transactionService.getTransactions().filter(transaction => transaction.id === transactionId);
+    const selectedTransaction = transaction[0];
+    const transactionToDelete = selectedTransaction.id
+    this.transactionService.deleteTransaction(transactionToDelete).subscribe(transactionid =>{},
+      (err)=> console.error(err))
+  }
 }
