@@ -1,7 +1,11 @@
+import { Account } from "./account";
+
 export interface Transaction{
     id: string,
     concept: string,
     description: string,
     ammount: number,
-    date: Date
+    date: string,
+    accountId: string,
+    candidateId?: string
 }

@@ -1,5 +1,4 @@
-import { ThisReceiver } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { TransactionService } from 'src/app/services/transaction.service';
 import { Account } from '../account';
@@ -17,23 +16,30 @@ export class CreateTransactionsComponent implements OnInit {
     concept: '',
     description: '',
     ammount: 0,
+    accountId: '',
     date: ''
   }
 
-  account!: Account[]
-
-
+  accounts!: Account[]
+  account!: Account
 
   constructor(private transactionService: TransactionService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.transactionService.getAccounts().subscribe(account => {
-      this.account = account.data;
-      console.log(this.account)
+      this.accounts = account.data;
+      console.log(this.accounts)
   })
 }
 
+@HostListener('change', ['$event'])
+public getAccount(account: any){
+  this.transaction.accountId = account.target.value
+  // console.log(this.transaction)
+}
+
   createTransaction(transaction: Transaction){
+    transaction.candidateId = 'efbd4282-cdee-462f-be42-1ab3f9d2e28a'
     this.transactionService.createTransaction(transaction).subscribe(transaction=>{},
       (err)=> console.error(err))
       console.log(transaction)

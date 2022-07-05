@@ -3,7 +3,7 @@
         <div class="col-md-6">
           <label class="form-label">Concept</label>
           <input type="text" class="form-control" name="concept"
-          ngModel required
+          required="true"
           [(ngModel)]="transaction.concept">
         </div>
         <div class="col-md-6">
@@ -12,27 +12,31 @@
           mask="separator.2" 
           thousandSeparator="," 
           separatorLimit="10000000"
-          ngModel required
+          required="true"
           [(ngModel)]="transaction.ammount">
         </div>
         <div class="col-md-6">
           <label class="form-label">Date</label>
           <input type="datetime" class="form-control" name="date"
           mask="0000/00/00"
-          ngModel required
+          required="true"
           [(ngModel)]="transaction.date" placeholder="10/12/2018...">
         </div>
         <div class="col-md-6">
           <label class="form-label">Description</label>
           <input type="text" class="form-control" name="description"
-          ngModel required
-          [(ngModel)]="transaction.description" placeholder="Something...">
+          [(ngModel)]="transaction.description" placeholder="Something..."
+          required="true">
         </div>
         <div class="col-12">
           <label for="inputState" class="form-label">State</label>
-          <select id="inputState" class="form-select">
+          <select id="inputState" class="form-select" required="true">
             <option selected>Choose...</option>
-            <option *ngFor="let account of account">{{account.id}}</option>
+            <option (onChange)="getAccount(account)"
+            *ngFor="let account of accounts"
+            [value]="account.id">
+            {{account.type}}
+          </option>
           </select>
         </div>
         <div class="col-12" style="padding-top:20px;">
