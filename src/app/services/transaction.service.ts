@@ -38,7 +38,6 @@ export class TransactionService {
   }
 
   deleteTransaction(transactionId: string): Observable<any>{
-    return this.httpClient.delete(`${environment.api_url}/${{transactionId}}`)
+    return this.httpClient.delete(`${environment.api_url}/transactions/:${transactionId}`)
   }
-
 }
